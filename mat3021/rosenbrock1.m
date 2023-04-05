@@ -13,8 +13,12 @@ for i=1:N
     xi(1,i) = ("x"+i);
     x(i) = 0; % Initial Guess
 end
-
-f = 5*x1^2 + x2^2 + 4*x1*x2 - 14*x1 - 6*x2 + 20
+%x(1) =-0.5;
+%x(2) = 0.2
+x(1) =-1.2;
+x(2) = 1.0;
+f = 100*(x2-x1^2)^2+(1-x1)^2
+%f = 5*x1^2 + x2^2 + 4*x1*x2 - 14*x1 - 6*x2 + 20
 %f = 10*x1^2 + x2^2 + 5*x1*x2 - 14*x1 - 6*x2 + 10
 %f = 10*x1^2 + 8*x2^2 + 5*x1*x2 - 14*x1 - 6*x2 + 10
 
@@ -51,9 +55,22 @@ while norm(G) >= e
     for i=1:N
       x_f(i)= subs(f, xi, l); 
     end
+
+    alpha= 1 ;
+    c = 10^-4;
+    rho = 0.3;
+    lh = subs(f,xi,x+alpha*Pk);
+    rh = subs(f,xi,x)+c*alpha*G'*Pk;
+
+    while lh>rh
+        alpha = rho*alpha;
+        lh = subs(f,xi,x+alpha*Pk);
+        rh = subs(f,xi,x)+c*alpha*G'*Pk;
+    end
     
-    GradF = diff(x_f, alpha);
-    alpha = solve(GradF, alpha); % Step size
+    %GradF = diff(x_f, alpha);
+    %alpha = solve(GradF, alpha); % Step size
+    %alpha = 0.002
     for i=1:N 
       x(i)= x(i) + alpha * Pk(i); % Updated xk value
     end
