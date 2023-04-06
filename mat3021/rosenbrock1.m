@@ -27,7 +27,7 @@ e = 10^(-5); % Convergence Criteria
 k = 1; % Iteration Counter
 alpha= 1 ;
 c = 10^-4;
-rho = 0.5;
+rho = 0.3;
 
 % Gradient Computation:
 for i=1:N 
