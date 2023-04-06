@@ -1,5 +1,6 @@
 %----------------------------------------------------------------------------------------------------
 % An implementation of Steepest descent method for optimization problems
+% with bracketing line search method
 %----------------------------------------------------------------------------------------------------
 
 clear all;
@@ -24,6 +25,9 @@ f = 100*(x2-x1^2)^2+(1-x1)^2
 
 e = 10^(-5); % Convergence Criteria
 k = 1; % Iteration Counter
+alpha= 1 ;
+c = 10^-4;
+rho = 0.5;
 
 % Gradient Computation:
 for i=1:N 
@@ -45,7 +49,7 @@ fprintf('||∇f(xk)||: %d\t', norm(G));
 fprintf('\n');
 
 while norm(G) >= e
-    syms alpha; 
+    %syms alpha; 
     
     x_old = x';
     for i=1:N 
@@ -55,10 +59,6 @@ while norm(G) >= e
     for i=1:N
       x_f(i)= subs(f, xi, l); 
     end
-
-    alpha= 1 ;
-    c = 10^-4;
-    rho = 0.3;
     lh = subs(f,xi,x+alpha*Pk);
     rh = subs(f,xi,x)+c*alpha*G'*Pk;
 
