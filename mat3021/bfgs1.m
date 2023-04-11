@@ -2,7 +2,8 @@
 % An implementation of BFGS algorithm  for optimization problems
 % Together with bracketing linesearch
 %----------------------------------------------------------------------------------------------------
-
+% Author: Sudarshan Kumar K.
+%
 clear all;
 close all;
 format long
