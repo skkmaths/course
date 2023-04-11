@@ -59,6 +59,8 @@ while norm(G) >= e
     for i=1:N
       x_f(i)= subs(f, xi, l); 
     end
+    % To compute step length alpha
+    
     lh = subs(f,xi,x+alpha*Pk);
     rh = subs(f,xi,x)+c*alpha*G'*Pk;
 
@@ -68,9 +70,6 @@ while norm(G) >= e
         rh = subs(f,xi,x)+c*alpha*G'*Pk;
     end
     
-    %GradF = diff(x_f, alpha);
-    %alpha = solve(GradF, alpha); % Step size
-    %alpha = 0.002
     for i=1:N 
       x(i)= x(i) + alpha * Pk(i); % Updated xk value
     end
