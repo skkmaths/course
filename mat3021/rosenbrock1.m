@@ -2,7 +2,7 @@
 % An implementation of Steepest descent method for optimization problems
 % with bracketing line search method
 %----------------------------------------------------------------------------------------------------
-
+% Author: Sudarshan Kumar K.
 clear all;
 close all;
 format long
