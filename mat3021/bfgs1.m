@@ -16,8 +16,8 @@ end
 
 % objective function
 f = 100*((x2 - x1^2)^2) + (1 - x1)^2
-%x = [-1.2 1]; % Initial Guess
-x = [-0.5 0.2];
+x = [-1.2 1]; % Initial Guess
+%x = [-0.5 0.2];
 %f = 100*((x2 - x1^2)^2) + (1 - x1)^2 + 90*((x4 - x3^2)^2) + (1 - x3)^2 + 10.1*((x2 - 1)^2 + (x4 - 1)^2) - 19.8*(x2 - 1)*(x4 - 1)
 %x = [-3 -1 -3 -1]; % Initial Guess
 
@@ -47,9 +47,9 @@ for i=1:N
     end
 end
 
-%HF_xk = subs(HF,xi,x);
+HF_xk = subs(HF,xi,x);
 %Pk = -1 * (HF_xk \ G');  % Search Direction
-Hk = eye(N);
+Hk = inv(HF_xk);
 Pk = -Hk*G';
 % display table
 fprintf('k: %d\t', k);
