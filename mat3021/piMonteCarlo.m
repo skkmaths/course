@@ -12,7 +12,7 @@ for i = 1:n
     
 end
 pi_estimate1 = 4 * count / n;
-pi_estimate2 = 4* sum(ind)/n;
+pi_estimate2 = 4 * sum(ind)/n;
 
 disp(pi_estimate1);
 disp(pi_estimate2);
