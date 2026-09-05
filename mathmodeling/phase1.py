@@ -8,11 +8,11 @@ def trajectory(t, X0, alpha, beta):
 
     x1 = np.exp(alpha * t) * (
         np.cos(beta * t) * x10
-        + np.sin(beta * t) * x20
+        - np.sin(beta * t) * x20
     )
 
     x2 = np.exp(alpha * t) * (
-        -np.sin(beta * t) * x10
+        np.sin(beta * t) * x10
         + np.cos(beta * t) * x20
     )
 
@@ -50,7 +50,10 @@ cases = [
 fig, axes = plt.subplots(2, 3, figsize=(15, 9))
 
 
-for ax, (alpha, beta) in zip(axes.flat, cases):
+for ax, (alpha, beta), label in zip(
+        axes.flat,
+        cases,
+        ['(a)', '(b)', '(c)', '(d)', '(e)', '(f)']):
 
     # ---------------------------------------------------
     # Choose time interval
@@ -114,8 +117,12 @@ for ax, (alpha, beta) in zip(axes.flat, cases):
     ax.set_xlabel(r'$x_1$', fontsize=13)
     ax.set_ylabel(r'$x_2$', fontsize=13)
 
+    # ---------------------------------------------------
+    # Caption / label
+    # ---------------------------------------------------
+
     ax.set_title(
-        rf'$\alpha={alpha},\quad \beta={beta}$',
+        rf'{label} $\alpha={alpha},\quad \beta={beta}$',
         fontsize=14
     )
 
